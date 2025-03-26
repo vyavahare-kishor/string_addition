@@ -11,8 +11,12 @@ RSpec.describe AdditionService do
       expect(AdditionService.new("1").call).to eq(1)
     end
 
-    it 'should return sum of two numbers within string' do
+    it 'should return sum of two numbers for string' do
       expect(AdditionService.new("2,3").call).to eq(5)
+    end
+
+    it 'should return sum of n numbers for string' do
+      expect(AdditionService.new("1,2,3,4,5,6,7,8,9").call).to eq(45)
     end
   end
 end
