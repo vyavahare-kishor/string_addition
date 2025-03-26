@@ -41,6 +41,20 @@ RSpec.describe AdditionService do
           expect(subject).to eq(45)
         end
       end
+
+      context 'when string contains a negative number' do
+        let(:numbers) { "1,-2,3" }
+        it 'should raise an error with a negative number' do
+          expect{subject}.to raise_error(Exception, "negative numbers not allowed -2")
+        end
+      end
+
+      context 'when string contains n negative numbers' do
+        let(:numbers) { "1,-2,-3" }
+        it 'should raise an error with comma separated n negative numbers' do
+          expect{subject}.to raise_error(Exception, "negative numbers not allowed -2,-3")
+        end
+      end
     end
   end
 end
