@@ -18,5 +18,9 @@ RSpec.describe AdditionService do
     it 'should return sum of n numbers for string' do
       expect(AdditionService.new("1,2,3,4,5,6,7,8,9").call).to eq(45)
     end
+
+    it 'should return sum of n numbers for string separated by comma and newline' do
+      expect(AdditionService.new("1,2\n3,4").call).to eq(10)
+    end
   end
 end
