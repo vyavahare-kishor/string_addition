@@ -13,6 +13,13 @@ RSpec.describe AdditionService do
       end
     end
 
+    context 'when string is nil' do
+      let(:numbers) { nil }
+      it 'should return 0' do
+        expect(subject).to eq(0)
+      end
+    end
+
     context 'when string is not empty' do
       context 'when string contain a single number' do
         let(:numbers) { "1" }
@@ -53,6 +60,22 @@ RSpec.describe AdditionService do
         let(:numbers) { "1,-2,-3" }
         it 'should raise an error with comma separated n negative numbers' do
           expect{subject}.to raise_error(Exception, "negative numbers not allowed -2,-3")
+        end
+      end
+
+      context 'when string contains different delimiter than (,\n)' do
+        context 'when string contain single delimiter' do
+          let(:numbers) { "//;\n1;2" }
+          it 'should return sum of n numbers' do
+            expect(subject).to eq(3)
+          end
+        end
+
+        context 'when string contain multiple delimiters' do
+          let(:numbers) { "//;;\n1;;2" }
+          it 'should return sum of n numbers' do
+            expect(subject).to eq(3)
+          end
         end
       end
     end
