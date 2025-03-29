@@ -20,6 +20,6 @@ class AdditionService
       raise "negative numbers not allowed #{negative_set.join(',')}"
     end
 
-    numbers.sum
+    numbers.reject { |n| n > 1000 }.sum
   end
 end

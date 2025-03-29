@@ -78,6 +78,14 @@ RSpec.describe AdditionService do
           end
         end
       end
+
+      context 'when string contain number greater than 1000' do
+        let(:numbers) { "1,2,1001" }
+        it 'should return sum by ignoring number greater than 1000' do
+          expect(subject).to eq(3)
+        end
+      end
+
     end
   end
 end
